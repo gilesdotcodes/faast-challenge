@@ -1,3 +1,4 @@
+require_relative 'ticket_machine'
 class Passenger
 
 	DEFAULT_BALANCE = 10
@@ -15,6 +16,12 @@ class Passenger
 
 	def wallet_balance
 		@wallet_balance ||= DEFAULT_BALANCE
+	end
+
+	def money_in_ticket_machine (ticket_machine, amount)
+		@wallet_balance = wallet_balance - amount
+
+		@mussel_balance = mussel_balance + ticket_machine.top_up(self, amount)
 	end
 
 end

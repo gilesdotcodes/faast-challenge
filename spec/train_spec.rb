@@ -12,4 +12,8 @@ describe Train do
 
 		expect(long_train.number_of_carriages).to eq(12)
 	end
+
+	it 'knows its total capacity' do
+		expect(train.capacity).to eq(320)
+	end
 end

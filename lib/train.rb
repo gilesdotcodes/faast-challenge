@@ -12,4 +12,8 @@ class Train
 		@number_of_carriages ||= 8 
 	end
 
+	def capacity
+		number_of_carriages * 40
+	end
+
 end

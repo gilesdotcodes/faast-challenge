@@ -11,7 +11,8 @@ describe Station do
 	it 'should only be able to receive a passenger if they have credit on Mussel Card' do 
 		passenger = double :passenger
 		allow(passenger).to receive(:mussel_balance).and_return(2)
-		station.allow_entry(passenger)
+		allow(passenger).to receive(:mussel_balance=)
+		station.allow_entry(passenger)		
 
 		expect(station.passengers_in_station.count).to eq(1)	
 	end
@@ -26,9 +27,20 @@ describe Station do
 	it 'should allow a person to leave when they disembark a train' do
 		passenger = double :passenger
 		allow(passenger).to receive(:mussel_balance).and_return(2)
+		allow(passenger).to receive(:mussel_balance=)
 		station.allow_entry(passenger)
 		station.allow_exit(passenger)
 
 		expect(station.passengers_in_station.count).to eq(0)
 	end	
+
+	it 'should reduce Mussel Balance by £2 after touching in' do
+		passenger = double :passenger
+		allow(passenger).to receive(:mussel_balance).and_return(2)
+		allow(passenger).to receive(:mussel_balance=).and_return(2)
+		allow(passenger).to receive(:mussel_balance).and_return(2)		
+
+		expect(station.allow_entry(passenger)).to eq(0)
+	end	
+
 end

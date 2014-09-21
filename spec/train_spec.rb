@@ -16,4 +16,9 @@ describe Train do
 	it 'knows its total capacity' do
 		expect(train.capacity).to eq(320)
 	end
+
+	it 'allows passengers to board the train' do
+		expect{train.board_train(:passenger)}.to change{train.number_of_passengers_onboard}.to eq(1)
+	end
+
 end

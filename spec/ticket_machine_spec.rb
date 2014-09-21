@@ -6,10 +6,10 @@ describe TicketMachine do
 	it 'should be able to top-up a Mussel Card' do
 		passenger = double :passenger
 		allow(passenger).to receive(:wallet_balance).and_return(10)
-		allow(passenger).to receive(:mussel_balance=).and_return(10)
-		allow(passenger).to receive(:mussel_balance).and_return(10)
+		#allow(passenger).to receive(:mussel_balance=).and_return(10)
+		#allow(passenger).to receive(:mussel_balance).and_return(10)
 
-		expect(ticket_machine.top_up(passenger, 7)).to eq(17)
+		expect(ticket_machine.top_up(passenger, 7)).to eq(7)
 	end
 
 	it 'should only allow a positive top-up amount' do

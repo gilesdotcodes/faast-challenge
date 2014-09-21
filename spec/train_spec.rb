@@ -26,4 +26,10 @@ describe Train do
 		expect{train.board_train(:passenger)}.to raise_error(RuntimeError)
 	end
 
+	it 'will allow passengers off the train' do
+		train.board_train(:passenger)
+		train.unboard_train(:passenger)
+		
+		expect(train.number_of_passengers_onboard).to eq(0)
+	end
 end

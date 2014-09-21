@@ -33,7 +33,7 @@ describe Passenger do
 
 	it 'should be able to add money from Wallet to Mussel Card' do
 		ticket_machine = double :ticket_machine
-		allow(ticket_machine).to receive(:top_up).and_return(16)
+		allow(ticket_machine).to receive(:top_up).and_return(6)
 		passenger.money_in_ticket_machine(ticket_machine, 6)
 
 		expect(passenger.mussel_balance).to eq(16)

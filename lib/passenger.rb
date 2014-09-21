@@ -20,8 +20,8 @@ class Passenger
 	end
 
 	def money_in_ticket_machine(ticket_machine, amount)
-		@mussel_balance = ticket_machine.top_up(self, amount) if ticket_machine.top_up(self, amount) != RuntimeError
-		@wallet_balance = (wallet_balance - amount) if ticket_machine.top_up(self, amount) != RuntimeError
+		@mussel_balance = mussel_balance + ticket_machine.top_up(self, amount) if ticket_machine.top_up(self, amount) != RuntimeError
+		@wallet_balance = wallet_balance - amount if ticket_machine.top_up(self, amount) != RuntimeError
 	end
 
 end

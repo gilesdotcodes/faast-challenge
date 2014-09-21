@@ -27,4 +27,8 @@ class Train
 		@passengers_onboard.count
 	end
 
+	def unboard_train(passenger)
+		@passengers_onboard.delete(passenger)
+	end
+
 end

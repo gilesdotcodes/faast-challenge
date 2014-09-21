@@ -19,6 +19,7 @@ class Train
 	end
 
 	def board_train (passenger)
+		raise "Train is full. Please wait for next train." if number_of_passengers_onboard>=capacity
 		@passengers_onboard << passenger
 	end
 

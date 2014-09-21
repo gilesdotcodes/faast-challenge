@@ -21,4 +21,9 @@ describe Train do
 		expect{train.board_train(:passenger)}.to change{train.number_of_passengers_onboard}.to eq(1)
 	end
 
+	it 'will only allow passengers onboard until it is full' do
+		320.times {train.board_train(:passenger)}
+		expect{train.board_train(:passenger)}.to raise_error(RuntimeError)
+	end
+
 end

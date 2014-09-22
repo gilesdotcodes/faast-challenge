@@ -2,12 +2,10 @@ require_relative 'passenger'
 
 class Station
 
+	attr_reader :passengers
+
 	def initialize
 		@passengers = []
-	end
-
-	def passengers_in_station
-		@passengers
 	end
 
 	def allow_entry(passenger)
@@ -20,6 +18,7 @@ class Station
 	def allow_exit(passenger)
 		@passengers.delete(passenger)
 	end
+
 
 	def release_to_train(passenger, train)
 		train.board_train(passenger)

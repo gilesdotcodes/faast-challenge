@@ -21,4 +21,14 @@ class Station
 		@passengers.delete(passenger)
 	end
 
+	def release_to_train(passenger, train)
+		train.board_train(passenger)
+		@passengers.delete(passenger) if train.board_train(passenger) != RuntimeError
+	end
+
+	def receive_from_train(passenger, train)
+		train.unboard_train(passenger)
+		@passengers << passenger
+	end
+
 end

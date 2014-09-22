@@ -32,4 +32,5 @@ describe Train do
 		
 		expect(train.number_of_passengers_onboard).to eq(0)
 	end
+	
 end

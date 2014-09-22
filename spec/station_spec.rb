@@ -43,4 +43,26 @@ describe Station do
 		expect(station.allow_entry(passenger)).to eq(0)
 	end	
 
+	it 'should release passenger from station when they board the train' do
+		passenger = double :passenger
+		train = double :train
+		allow(passenger).to receive(:mussel_balance).and_return(2)
+		allow(passenger).to receive(:mussel_balance=)
+		station.allow_entry(passenger)
+		allow(train).to receive(:board_train)
+
+		expect{station.release_to_train(passenger, train)}.to change{station.passengers_in_station.count}.by(-1)
+	end
+
+	it 'should receive passenger from train when they disembark' do
+		passenger = double :passenger
+		train = double :train
+		allow(passenger).to receive(:mussel_balance).and_return(2)
+		allow(passenger).to receive(:mussel_balance=)
+		station.allow_entry(passenger)
+		allow(train).to receive(:unboard_train)
+
+		expect{station.receive_from_train(passenger, train)}.to change{station.passengers_in_station.count}.by(1)
+	end
+
 end

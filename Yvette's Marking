@@ -1,0 +1,17 @@
+##General Comments
+
+- Wallet + Ticket Machine are outside of the original spec (but very cool!) 
+
+
+
+##Bugs
+
+- Train can't arrive at station, and station has no array, so can't store trains.
+  - So, passangers can be added to trains anywhere in the system
+- Person can be added to a station mutliple times (which duplicates it)
+
+
+##Refactoring
+
+- Station's 'allow_entry' method's name isn't clear (it also denies entry as well as allows)
+- Testing using London doubles?
